@@ -24,7 +24,9 @@ import seedu.guestnote.model.guest.Guest;
 import seedu.guestnote.model.guest.Name;
 import seedu.guestnote.model.guest.Phone;
 import seedu.guestnote.model.guest.RoomNumber;
+import seedu.guestnote.model.request.Request;
 import seedu.guestnote.model.request.UniqueRequestList;
+import seedu.guestnote.model.request.exceptions.DuplicateRequestException;
 
 /**
  * Edits the details of an existing guest in the guestnote book.
@@ -50,6 +52,9 @@ public class EditCommand extends Command {
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Guest: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_PERSON = "This guest already exists in the guestnote book.";
+
+    public static final String MESSAGE_DUPLICATE_REQUEST = "This request already exists for this guest.";
+    public static final String MESSAGE_MISSING_REQUEST = "This request does not exist for this guest.";
 
     private final Index index;
     private final EditPersonDescriptor editPersonDescriptor;
@@ -91,7 +96,7 @@ public class EditCommand extends Command {
      * Creates and returns a {@code Guest} with the details of {@code guestToEdit}
      * edited with {@code editPersonDescriptor}.
      */
-    private static Guest createEditedPerson(Guest guestToEdit, EditPersonDescriptor editPersonDescriptor) {
+    private static Guest createEditedPerson(Guest guestToEdit, EditPersonDescriptor editPersonDescriptor) throws CommandException {
         assert guestToEdit != null;
 
         Name updatedName = editPersonDescriptor.getName().orElse(guestToEdit.getName());
@@ -103,8 +108,16 @@ public class EditCommand extends Command {
         UniqueRequestList updatedRequests = new UniqueRequestList();
         updatedRequests.setRequests(guestToEdit.getRequests());
 
-        editPersonDescriptor.getRequestsToAdd().ifPresent(updatedRequests::addAll);
-        editPersonDescriptor.getRequestsToDelete().ifPresent(updatedRequests::removeAll);
+        if (editPersonDescriptor.getRequestToAdd().isPresent()
+                && updatedRequests.contains(editPersonDescriptor.requestToAdd)) {
+            throw new CommandException(MESSAGE_DUPLICATE_REQUEST);
+        }
+        editPersonDescriptor.getRequestToAdd().ifPresent(updatedRequests::add);
+        if (editPersonDescriptor.getRequestToDelete().isPresent()
+                && !updatedRequests.contains(editPersonDescriptor.requestToDelete)) {
+            throw new CommandException(MESSAGE_MISSING_REQUEST);
+        }
+        editPersonDescriptor.getRequestToDelete().ifPresent(updatedRequests::remove);
 
         return new Guest(updatedName, updatedPhone, updatedEmail, updatedRoomNumber, updatedRequests);
     }
@@ -143,8 +156,8 @@ public class EditCommand extends Command {
         private Email email;
         private RoomNumber roomNumber;
         private UniqueRequestList requests;
-        private UniqueRequestList requestsToAdd;
-        private UniqueRequestList requestsToDelete;
+        private Request requestToAdd;
+        private Request requestToDelete;
 
         public EditPersonDescriptor() {}
 
@@ -158,15 +171,15 @@ public class EditCommand extends Command {
             setEmail(toCopy.email);
             setRoomNumber(toCopy.roomNumber);
             setRequests(toCopy.requests);
-            setRequestsToAdd(toCopy.requestsToAdd);
-            setRequestsToDelete(toCopy.requestsToDelete);
+            setRequestToAdd(toCopy.requestToAdd);
+            setRequestToDelete(toCopy.requestToDelete);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, roomNumber, requestsToAdd, requestsToDelete);
+            return CollectionUtil.isAnyNonNull(name, phone, email, roomNumber, requestToAdd, requestToDelete);
         }
 
         public void setName(Name name) {
@@ -218,22 +231,16 @@ public class EditCommand extends Command {
          * Sets {@code requestsToAdd} to this object's {@code requestsToAdd}.
          * A defensive copy of {@code requestsToAdd} is used internally.
          */
-        public void setRequestsToAdd(UniqueRequestList requestsToAdd) {
-            this.requestsToAdd = (requestsToAdd != null) ? new UniqueRequestList() : null;
-            if (requestsToAdd != null) {
-                this.requestsToAdd.setRequests(requestsToAdd);
-            }
+        public void setRequestToAdd(Request requestToAdd) {
+            this.requestToAdd = requestToAdd;
         }
 
         /**
          * Sets {@code requestsToDelete} to this object's {@code requestsToDelete}.
          * A defensive copy of {@code requestsToDelete} is used internally.
          */
-        public void setRequestsToDelete(UniqueRequestList requestsToDelete) {
-            this.requestsToDelete = (requestsToDelete != null) ? new UniqueRequestList() : null;
-            if (requestsToDelete != null) {
-                this.requestsToDelete.setRequests(requestsToDelete);
-            }
+        public void setRequestToDelete(Request requestToDelete) {
+            this.requestToDelete = requestToDelete;
         }
 
         /**
@@ -241,10 +248,8 @@ public class EditCommand extends Command {
          * if modification is attempted.
          * Returns {@code Optional#empty()} if {@code requests} is null.
          */
-        public Optional<UniqueRequestList> getRequestsToAdd() {
-            return (requestsToAdd != null)
-                    ? Optional.of(requestsToAdd)
-                    : Optional.empty();
+        public Optional<Request> getRequestToAdd() {
+            return Optional.ofNullable(requestToAdd);
         }
 
         /**
@@ -252,10 +257,8 @@ public class EditCommand extends Command {
          * if modification is attempted.
          * Returns {@code Optional#empty()} if {@code requests} is null.
          */
-        public Optional<UniqueRequestList> getRequestsToDelete() {
-            return (requestsToDelete != null)
-                    ? Optional.of(requestsToDelete)
-                    : Optional.empty();
+        public Optional<Request> getRequestToDelete() {
+            return Optional.ofNullable(requestToDelete);
         }
 
         @Override
@@ -274,8 +277,8 @@ public class EditCommand extends Command {
                     && Objects.equals(phone, otherEditPersonDescriptor.phone)
                     && Objects.equals(email, otherEditPersonDescriptor.email)
                     && Objects.equals(roomNumber, otherEditPersonDescriptor.roomNumber)
-                    && Objects.equals(requestsToAdd, otherEditPersonDescriptor.requestsToAdd)
-                    && Objects.equals(requestsToDelete, otherEditPersonDescriptor.requestsToDelete);
+                    && Objects.equals(requestToAdd, otherEditPersonDescriptor.requestToAdd)
+                    && Objects.equals(requestToDelete, otherEditPersonDescriptor.requestToDelete);
         }
 
         @Override
@@ -285,8 +288,8 @@ public class EditCommand extends Command {
                     .add("phone", phone)
                     .add("email", email)
                     .add("roomNumber", roomNumber)
-                    .add("requestsToAdd", requestsToAdd)
-                    .add("requestsToDelete", requestsToDelete)
+                    .add("requestsToAdd", requestToAdd)
+                    .add("requestsToDelete", requestToDelete)
                     .toString();
         }
     }

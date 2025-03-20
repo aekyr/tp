@@ -11,7 +11,6 @@ import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_ROOMNUMBER;
 import seedu.guestnote.logic.commands.AddCommand;
 import seedu.guestnote.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.guestnote.model.guest.Guest;
-import seedu.guestnote.model.request.UniqueRequestList;
 
 
 /**
@@ -51,22 +50,10 @@ public class PersonUtil {
         descriptor.getEmail().ifPresent(email -> sb.append(PREFIX_EMAIL).append(email.value).append(" "));
         descriptor.getRoomNumber().ifPresent(roomNumber ->
                 sb.append(PREFIX_ROOMNUMBER).append(roomNumber.roomNumber).append(" "));
-        if (descriptor.getRequestsToAdd().isPresent()) {
-            UniqueRequestList requests = descriptor.getRequestsToAdd().get();
-            if (requests.isEmpty()) {
-                sb.append(PREFIX_ADD_REQ);
-            } else {
-                requests.forEach(s -> sb.append(PREFIX_ADD_REQ).append(s.tagName).append(" "));
-            }
-        }
-        if (descriptor.getRequestsToAdd().isPresent()) {
-            UniqueRequestList requests = descriptor.getRequestsToAdd().get();
-            if (requests.isEmpty()) {
-                sb.append(PREFIX_DELETE_REQ);
-            } else {
-                requests.forEach(s -> sb.append(PREFIX_DELETE_REQ).append(s.tagName).append(" "));
-            }
-        }
+        descriptor.getRequestToAdd().ifPresent(request ->
+                sb.append(PREFIX_ADD_REQ).append(request.tagName).append(" "));
+        descriptor.getRequestToDelete().ifPresent(request ->
+                sb.append(PREFIX_DELETE_REQ).append(request.tagName).append(" "));
         return sb.toString();
     }
 }

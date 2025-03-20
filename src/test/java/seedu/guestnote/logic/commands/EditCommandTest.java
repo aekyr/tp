@@ -59,7 +59,7 @@ public class EditCommandTest {
                 .withRequests(VALID_TAG_HUSBAND).build();
 
         EditPersonDescriptor descriptor = new EditPersonDescriptorBuilder().withName(VALID_NAME_BOB)
-                .withPhone(VALID_PHONE_BOB).withRequestsToAdd(VALID_TAG_HUSBAND).build();
+                .withPhone(VALID_PHONE_BOB).withRequestToAdd(VALID_TAG_HUSBAND).build();
         EditCommand editCommand = new EditCommand(indexLastPerson, descriptor);
 
         String expectedMessage = String.format(EditCommand.MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedGuest));

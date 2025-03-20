@@ -100,7 +100,7 @@ public class ParserUtil {
      *
      * @throws ParseException if the given {@code request} is invalid.
      */
-    public static Request parseTag(String tag) throws ParseException {
+    public static Request parseRequest(String tag) throws ParseException {
         requireNonNull(tag);
         String trimmedTag = tag.trim();
         if (!Request.isValidTagName(trimmedTag)) {
@@ -116,7 +116,7 @@ public class ParserUtil {
         requireNonNull(tags);
         UniqueRequestList requestList = new UniqueRequestList();
         for (String tagName : tags) {
-            requestList.add(parseTag(tagName));
+            requestList.add(parseRequest(tagName));
         }
         return requestList;
     }

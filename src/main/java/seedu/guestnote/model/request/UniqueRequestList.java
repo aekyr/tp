@@ -150,21 +150,4 @@ public class UniqueRequestList implements Iterable<Request> {
         return internalList.isEmpty();
     }
 
-    /**
-     * Adds all the requests in the list to the current list.
-     */
-    public void addAll(UniqueRequestList requests) {
-        for (Request request : requests) {
-            add(request);
-        }
-    }
-
-    /**
-     * Removes all the requests in the list from the current list.
-     */
-    public void removeAll(UniqueRequestList requests) {
-        for (Request request : requests) {
-            remove(request);
-        }
-    }
 }

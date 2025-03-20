@@ -48,7 +48,7 @@ public class EditGuestDescriptorTest {
         assertFalse(DESC_AMY.equals(editedAmy));
 
         // different tags -> returns false
-        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withRequestsToAdd(VALID_TAG_HUSBAND).build();
+        editedAmy = new EditPersonDescriptorBuilder(DESC_AMY).withRequestToAdd(VALID_TAG_HUSBAND).build();
         assertFalse(DESC_AMY.equals(editedAmy));
     }
 
@@ -60,8 +60,8 @@ public class EditGuestDescriptorTest {
                 + editPersonDescriptor.getPhone().orElse(null) + ", email="
                 + editPersonDescriptor.getEmail().orElse(null) + ", roomNumber="
                 + editPersonDescriptor.getRoomNumber().orElse(null) + ", requestsToAdd="
-                + editPersonDescriptor.getRequestsToAdd().orElse(null) + ", requestsToDelete="
-                + editPersonDescriptor.getRequestsToDelete().orElse(null) + "}";
+                + editPersonDescriptor.getRequestToAdd().orElse(null) + ", requestsToDelete="
+                + editPersonDescriptor.getRequestToDelete().orElse(null) + "}";
         assertEquals(expected, editPersonDescriptor.toString());
     }
 }

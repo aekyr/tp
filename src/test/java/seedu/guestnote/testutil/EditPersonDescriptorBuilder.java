@@ -1,7 +1,5 @@
 package seedu.guestnote.testutil;
 
-import java.util.stream.Stream;
-
 import seedu.guestnote.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.guestnote.model.guest.Email;
 import seedu.guestnote.model.guest.Guest;
@@ -73,13 +71,11 @@ public class EditPersonDescriptorBuilder {
     }
 
     /**
-     * Parses the {@code requests} into a {@code Set<Request>} and sets them as requests **to add**
-     * in the {@code EditPersonDescriptor} that we are building.
+     * Parses the {@code requests} into a {@code Set<Request>} and set it to the {@code EditPersonDescriptor}
+     * that we are building.
      */
-    public EditPersonDescriptorBuilder withRequestsToAdd(String... requests) {
-        UniqueRequestList requestList = new UniqueRequestList();
-        Stream.of(requests).map(Request::new).forEach(requestList::add);
-        descriptor.setRequestsToAdd(requestList);
+    public EditPersonDescriptorBuilder withRequestToAdd(String request) {
+        descriptor.setRequestToAdd(new Request(request));
         return this;
     }
 
@@ -87,10 +83,8 @@ public class EditPersonDescriptorBuilder {
      * Parses the {@code requests} into a {@code Set<Request>} and sets them as requests **to remove**
      * in the {@code EditPersonDescriptor} that we are building.
      */
-    public EditPersonDescriptorBuilder withRequestsToDelete(String... requests) {
-        UniqueRequestList requestList = new UniqueRequestList();
-        Stream.of(requests).map(Request::new).forEach(requestList::add);
-        descriptor.setRequestsToDelete(requestList);
+    public EditPersonDescriptorBuilder withRequestToDelete(String request) {
+        descriptor.setRequestToDelete(new Request(request));
         return this;
     }
 

@@ -9,14 +9,10 @@ import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_ROOMNUMBER;
 
-import java.util.Collection;
-import java.util.Optional;
-
 import seedu.guestnote.commons.core.index.Index;
 import seedu.guestnote.logic.commands.EditCommand;
 import seedu.guestnote.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.guestnote.logic.parser.exceptions.ParseException;
-import seedu.guestnote.model.request.UniqueRequestList;
 
 /**
  * Parses input arguments and creates a new EditCommand object
@@ -63,12 +59,14 @@ public class EditCommandParser implements Parser<EditCommand> {
             );
         }
         if (argMultimap.getValue(PREFIX_ADD_REQ).isPresent()) {
-            parseTagsForEdit(argMultimap.getAllValues(PREFIX_ADD_REQ))
-                    .ifPresent(editPersonDescriptor::setRequestsToAdd);
+            editPersonDescriptor.setRequestToAdd(ParserUtil.parseRequest(
+                    argMultimap.getValue(PREFIX_ADD_REQ).get())
+            );
         }
         if (argMultimap.getValue(PREFIX_DELETE_REQ).isPresent()) {
-            parseTagsForEdit(argMultimap.getAllValues(PREFIX_DELETE_REQ))
-                    .ifPresent(editPersonDescriptor::setRequestsToDelete);
+            editPersonDescriptor.setRequestToDelete(ParserUtil.parseRequest(
+                    argMultimap.getValue(PREFIX_DELETE_REQ).get())
+            );
         }
 
         if (!editPersonDescriptor.isAnyFieldEdited()) {
@@ -76,22 +74,6 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
 
         return new EditCommand(index, editPersonDescriptor);
-    }
-
-    /**
-     * Parses {@code Collection<String> tags} into a {@code Set<Request>} if {@code tags} is non-empty.
-     * If {@code tags} contain only one element which is an empty string, it will be parsed into a
-     * {@code Set<Request>} containing zero tags.
-     */
-    private Optional<UniqueRequestList> parseTagsForEdit(Collection<String> requests) throws ParseException {
-        assert requests != null;
-
-        if (requests.isEmpty()) {
-            return Optional.empty();
-        }
-        UniqueRequestList requestList = new UniqueRequestList();
-        requestList.setRequests(ParserUtil.parseTags(requests));
-        return Optional.of(requestList);
     }
 
 }

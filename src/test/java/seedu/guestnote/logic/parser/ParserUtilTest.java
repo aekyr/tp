@@ -121,26 +121,26 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseTag_null_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> ParserUtil.parseTag(null));
+    public void parseRequest_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> ParserUtil.parseRequest(null));
     }
 
     @Test
     public void parseTag_invalidValue_throwsParseException() {
-        assertThrows(ParseException.class, () -> ParserUtil.parseTag(INVALID_REQUEST));
+        assertThrows(ParseException.class, () -> ParserUtil.parseRequest(INVALID_REQUEST));
     }
 
     @Test
-    public void parseTag_validValueWithoutWhitespace_returnsTag() throws Exception {
+    public void parseTag_validValueWithoutWhitespace_returnsRequest() throws Exception {
         Request expectedRequest = new Request(VALID_REQUEST_1);
-        assertEquals(expectedRequest, ParserUtil.parseTag(VALID_REQUEST_1));
+        assertEquals(expectedRequest, ParserUtil.parseRequest(VALID_REQUEST_1));
     }
 
     @Test
-    public void parseTag_validValueWithWhitespace_returnsTrimmedTag() throws Exception {
+    public void parseTag_validValueWithWhitespace_returnsTrimmedRequest() throws Exception {
         String tagWithWhitespace = WHITESPACE + VALID_REQUEST_1 + WHITESPACE;
         Request expectedRequest = new Request(VALID_REQUEST_1);
-        assertEquals(expectedRequest, ParserUtil.parseTag(tagWithWhitespace));
+        assertEquals(expectedRequest, ParserUtil.parseRequest(tagWithWhitespace));
     }
 
     @Test
@@ -160,7 +160,7 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseTags_collectionWithValidTags_returnsTagSet() throws Exception {
+    public void parseTags_collectionWithValidTags_returnsRequestSet() throws Exception {
         UniqueRequestList actualRequestList = ParserUtil.parseTags(Arrays.asList(VALID_REQUEST_1, VALID_REQUEST_2));
         UniqueRequestList expectedRequestList = new UniqueRequestList();
         expectedRequestList.add(new Request(VALID_REQUEST_1));
