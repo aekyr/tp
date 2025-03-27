@@ -17,8 +17,8 @@ import seedu.guestnote.model.guest.Guest;
 import seedu.guestnote.model.guest.Name;
 import seedu.guestnote.model.guest.Phone;
 import seedu.guestnote.model.guest.RoomNumber;
-import seedu.guestnote.model.request.Request;
 import seedu.guestnote.model.guest.Status;
+import seedu.guestnote.model.request.Request;
 import seedu.guestnote.model.request.UniqueRequestList;
 
 /**
