@@ -2,21 +2,23 @@ package seedu.guestnote.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.guestnote.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_ADD_REQUEST;
-import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_DELETE_REQUEST;
+import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_ADD_REQ;
+import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_DELETE_REQ;
+import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_DELETE_REQ_INDEX;
 import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_ROOMNUMBER;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 import seedu.guestnote.commons.core.index.Index;
 import seedu.guestnote.logic.commands.EditCommand;
 import seedu.guestnote.logic.commands.EditCommand.EditGuestDescriptor;
 import seedu.guestnote.logic.parser.exceptions.ParseException;
-import seedu.guestnote.model.request.UniqueRequestList;
+import seedu.guestnote.model.request.Request;
 
 /**
  * Parses input arguments and creates a new EditCommand object
@@ -31,8 +33,8 @@ public class EditCommandParser implements Parser<EditCommand> {
     public EditCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(
-                args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ROOMNUMBER, PREFIX_ADD_REQUEST,
-                PREFIX_DELETE_REQUEST
+                args, PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ROOMNUMBER,
+                PREFIX_ADD_REQ, PREFIX_DELETE_REQ, PREFIX_DELETE_REQ_INDEX
         );
 
         Index index;
@@ -44,7 +46,7 @@ public class EditCommandParser implements Parser<EditCommand> {
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(
-                PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ROOMNUMBER, PREFIX_ADD_REQUEST, PREFIX_DELETE_REQUEST
+                PREFIX_NAME, PREFIX_PHONE, PREFIX_EMAIL, PREFIX_ROOMNUMBER
         );
 
         EditGuestDescriptor editGuestDescriptor = new EditGuestDescriptor();
@@ -63,13 +65,18 @@ public class EditCommandParser implements Parser<EditCommand> {
                     argMultimap.getValue(PREFIX_ROOMNUMBER).get())
             );
         }
-        if (argMultimap.getValue(PREFIX_ADD_REQUEST).isPresent()) {
-            parseRequestsForEdit(argMultimap.getAllValues(PREFIX_ADD_REQUEST))
+        if (argMultimap.getValue(PREFIX_ADD_REQ).isPresent()) {
+            parseRequestsForEdit(argMultimap.getAllValues(PREFIX_ADD_REQ))
                     .ifPresent(editGuestDescriptor::setRequestsToAdd);
         }
-        if (argMultimap.getValue(PREFIX_DELETE_REQUEST).isPresent()) {
-            parseRequestsForEdit(argMultimap.getAllValues(PREFIX_DELETE_REQUEST))
+        if (argMultimap.getValue(PREFIX_DELETE_REQ).isPresent()) {
+            parseRequestsForEdit(argMultimap.getAllValues(PREFIX_DELETE_REQ))
                     .ifPresent(editGuestDescriptor::setRequestsToDelete);
+        }
+        if (argMultimap.getValue(PREFIX_DELETE_REQ_INDEX).isPresent()) {
+            editGuestDescriptor.setRequestIndexesToDelete(ParserUtil.parseIndexes(
+                    argMultimap.getAllValues(PREFIX_DELETE_REQ_INDEX))
+            );
         }
 
         if (!editGuestDescriptor.isAnyFieldEdited()) {
@@ -84,14 +91,13 @@ public class EditCommandParser implements Parser<EditCommand> {
      * If {@code requests} contain only one element which is an empty string, it will be parsed into a
      * {@code Set<Request>} containing zero requests.
      */
-    private Optional<UniqueRequestList> parseRequestsForEdit(Collection<String> requests) throws ParseException {
+    private Optional<List<Request>> parseRequestsForEdit(Collection<String> requests) throws ParseException {
         assert requests != null;
 
         if (requests.isEmpty()) {
             return Optional.empty();
         }
-        UniqueRequestList requestList = new UniqueRequestList();
-        requestList.setRequests(ParserUtil.parseRequests(requests));
+        List<Request> requestList = ParserUtil.parseRequests(requests);
         return Optional.of(requestList);
     }
 

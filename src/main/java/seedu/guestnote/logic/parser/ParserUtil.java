@@ -2,7 +2,9 @@ package seedu.guestnote.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import seedu.guestnote.commons.core.index.Index;
 import seedu.guestnote.commons.util.StringUtil;
@@ -12,7 +14,6 @@ import seedu.guestnote.model.guest.Name;
 import seedu.guestnote.model.guest.Phone;
 import seedu.guestnote.model.guest.RoomNumber;
 import seedu.guestnote.model.request.Request;
-import seedu.guestnote.model.request.UniqueRequestList;
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -32,6 +33,19 @@ public class ParserUtil {
             throw new ParseException(MESSAGE_INVALID_INDEX);
         }
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
+    }
+
+    /**
+     * Parses a list of {@code String indexes} into a list of {@code Index}.
+     * Leading and trailing whitespaces will be trimmed.
+     * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).
+     */
+    public static List<Index> parseIndexes(List<String> indexes) throws ParseException {
+        List<Index> indexList = new ArrayList<>();
+        for (String index : indexes) {
+            indexList.add(parseIndex(index));
+        }
+        return indexList;
     }
 
     /**
@@ -112,11 +126,11 @@ public class ParserUtil {
     /**
      * Parses {@code Collection<String> requests} into a {@code UniqueRequestList}.
      */
-    public static UniqueRequestList parseRequests(Collection<String> requests) throws ParseException {
-        requireNonNull(requests);
-        UniqueRequestList requestList = new UniqueRequestList();
-        for (String requestName : requests) {
-            requestList.add(parseRequest(requestName));
+    public static List<Request> parseRequests(Collection<String> reqs) throws ParseException {
+        requireNonNull(reqs);
+        List<Request> requestList = new ArrayList<>();
+        for (String req : reqs) {
+            requestList.add(parseRequest(req));
         }
         return requestList;
     }

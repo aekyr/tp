@@ -1,17 +1,20 @@
 package seedu.guestnote.testutil;
 
-import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_ADD_REQUEST;
-import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_DELETE_REQUEST;
+import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_ADD_REQ;
+import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_DELETE_REQ;
 import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_REQUEST;
 import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_ROOMNUMBER;
 
+import java.util.List;
+
 import seedu.guestnote.logic.commands.AddCommand;
 import seedu.guestnote.logic.commands.EditCommand.EditGuestDescriptor;
 import seedu.guestnote.model.guest.Guest;
-import seedu.guestnote.model.request.UniqueRequestList;
+import seedu.guestnote.model.request.Request;
+
 
 
 /**
@@ -52,19 +55,19 @@ public class GuestUtil {
         descriptor.getRoomNumber().ifPresent(roomNumber ->
                 sb.append(PREFIX_ROOMNUMBER).append(roomNumber.roomNumber).append(" "));
         if (descriptor.getRequestsToAdd().isPresent()) {
-            UniqueRequestList requests = descriptor.getRequestsToAdd().get();
+            List<Request> requests = descriptor.getRequestsToAdd().get();
             if (requests.isEmpty()) {
-                sb.append(PREFIX_ADD_REQUEST);
+                sb.append(PREFIX_ADD_REQ);
             } else {
-                requests.forEach(s -> sb.append(PREFIX_ADD_REQUEST).append(s.requestName).append(" "));
+                requests.forEach(s -> sb.append(PREFIX_ADD_REQ).append(s.requestName).append(" "));
             }
         }
         if (descriptor.getRequestsToAdd().isPresent()) {
-            UniqueRequestList requests = descriptor.getRequestsToAdd().get();
+            List<Request> requests = descriptor.getRequestsToAdd().get();
             if (requests.isEmpty()) {
-                sb.append(PREFIX_DELETE_REQUEST);
+                sb.append(PREFIX_DELETE_REQ);
             } else {
-                requests.forEach(s -> sb.append(PREFIX_DELETE_REQUEST).append(s.requestName).append(" "));
+                requests.forEach(s -> sb.append(PREFIX_DELETE_REQ).append(s.requestName).append(" "));
             }
         }
         return sb.toString();

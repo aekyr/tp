@@ -54,7 +54,8 @@ public class EditGuestDescriptorTest {
                 + editGuestDescriptor.getEmail().orElse(null) + ", roomNumber="
                 + editGuestDescriptor.getRoomNumber().orElse(null) + ", requestsToAdd="
                 + editGuestDescriptor.getRequestsToAdd().orElse(null) + ", requestsToDelete="
-                + editGuestDescriptor.getRequestsToDelete().orElse(null) + "}";
+                + editGuestDescriptor.getRequestsToDelete().orElse(null) + ", requestIndexesToDelete="
+                + editGuestDescriptor.getRequestIndexesToDelete().orElse(null) + "}";
         assertEquals(expected, editGuestDescriptor.toString());
     }
 }

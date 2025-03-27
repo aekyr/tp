@@ -39,7 +39,7 @@ public class UniqueRequestList implements Iterable<Request> {
     public void add(Request toAdd) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
-            throw new DuplicateRequestException();
+            throw new DuplicateRequestException(toAdd.toString());
         }
         internalList.add(toAdd);
     }
@@ -54,11 +54,11 @@ public class UniqueRequestList implements Iterable<Request> {
 
         int index = internalList.indexOf(target);
         if (index == -1) {
-            throw new RequestNotFoundException();
+            throw new RequestNotFoundException(target.toString());
         }
 
         if (!target.isSameRequest(editedRequest) && contains(editedRequest)) {
-            throw new DuplicateRequestException();
+            throw new DuplicateRequestException(editedRequest.toString());
         }
 
         internalList.set(index, editedRequest);
@@ -71,7 +71,7 @@ public class UniqueRequestList implements Iterable<Request> {
     public void remove(Request toRemove) {
         requireNonNull(toRemove);
         if (!internalList.remove(toRemove)) {
-            throw new RequestNotFoundException();
+            throw new RequestNotFoundException(toRemove.toString());
         }
     }
 
@@ -87,7 +87,7 @@ public class UniqueRequestList implements Iterable<Request> {
     public void setRequests(List<Request> requests) {
         requireAllNonNull(requests);
         if (!requestsAreUnique(requests)) {
-            throw new DuplicateRequestException();
+            throw new DuplicateRequestException(requests.toString());
         }
 
         internalList.setAll(requests);
@@ -153,7 +153,7 @@ public class UniqueRequestList implements Iterable<Request> {
     /**
      * Adds all the requests in the list to the current list.
      */
-    public void addAll(UniqueRequestList requests) {
+    public void addAll(List<Request> requests) {
         for (Request request : requests) {
             add(request);
         }
@@ -162,7 +162,7 @@ public class UniqueRequestList implements Iterable<Request> {
     /**
      * Removes all the requests in the list from the current list.
      */
-    public void removeAll(UniqueRequestList requests) {
+    public void removeAll(List<Request> requests) {
         for (Request request : requests) {
             remove(request);
         }

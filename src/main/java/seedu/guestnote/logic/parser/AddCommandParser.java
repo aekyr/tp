@@ -7,6 +7,7 @@ import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_REQUEST;
 import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_ROOMNUMBER;
 
+import java.util.List;
 import java.util.stream.Stream;
 
 import seedu.guestnote.logic.commands.AddCommand;
@@ -16,6 +17,7 @@ import seedu.guestnote.model.guest.Guest;
 import seedu.guestnote.model.guest.Name;
 import seedu.guestnote.model.guest.Phone;
 import seedu.guestnote.model.guest.RoomNumber;
+import seedu.guestnote.model.request.Request;
 import seedu.guestnote.model.guest.Status;
 import seedu.guestnote.model.request.UniqueRequestList;
 
@@ -46,10 +48,12 @@ public class AddCommandParser implements Parser<AddCommand> {
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         Email email = ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get());
         RoomNumber roomNumber = ParserUtil.parseRoomNumber(argMultimap.getValue(PREFIX_ROOMNUMBER).get());
+        List<Request> requestList = ParserUtil.parseRequests(argMultimap.getAllValues(PREFIX_REQUEST));
+        UniqueRequestList requests = new UniqueRequestList();
+        requests.addAll(requestList);
         Status status = Status.BOOKING;
-        UniqueRequestList requestList = ParserUtil.parseRequests(argMultimap.getAllValues(PREFIX_REQUEST));
 
-        Guest guest = new Guest(name, phone, email, roomNumber, status, requestList);
+        Guest guest = new Guest(name, phone, email, roomNumber, status, requests);
 
         return new AddCommand(guest);
     }

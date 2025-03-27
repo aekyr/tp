@@ -2,7 +2,7 @@ package seedu.guestnote.logic.commands;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_ADD_REQUEST;
+import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_ADD_REQ;
 import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.guestnote.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -50,16 +50,16 @@ public class CommandTestUtil {
     public static final String ROOMNUMBER_DESC_AMY = " " + PREFIX_ROOMNUMBER + VALID_ROOMNUMBER_AMY;
     public static final String ROOMNUMBER_DESC_BOB = " " + PREFIX_ROOMNUMBER + VALID_ROOMNUMBER_BOB;
     public static final String REQUEST_DESC_FRIEND = " " + PREFIX_REQUEST + VALID_REQUEST_FRIEND;
-    public static final String ADD_REQUEST_DESC_FRIEND = " " + PREFIX_ADD_REQUEST + VALID_REQUEST_FRIEND;
+    public static final String ADD_REQUEST_DESC_FRIEND = " " + PREFIX_ADD_REQ + VALID_REQUEST_FRIEND;
     public static final String REQUEST_DESC_HUSBAND = " " + PREFIX_REQUEST + VALID_REQUEST_HUSBAND;
-    public static final String ADD_REQUEST_DESC_HUSBAND = " " + PREFIX_ADD_REQUEST + VALID_REQUEST_HUSBAND;
+    public static final String ADD_REQUEST_DESC_HUSBAND = " " + PREFIX_ADD_REQ + VALID_REQUEST_HUSBAND;
 
     public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
     public static final String INVALID_REQUEST_DESC = " " + PREFIX_REQUEST + "hubby*"; // '*' not allowed in requests
     public static final String INVALID_ROOMNUMBER_DESC = " " + PREFIX_ROOMNUMBER + "12"; // missing last digit
-    public static final String INVALID_ADD_REQUEST_DESC = " " + PREFIX_ADD_REQUEST + "hubby*";
+    public static final String INVALID_ADD_REQUEST_DESC = " " + PREFIX_ADD_REQ + "hubby*";
     // '*' not allowed in requests
 
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";

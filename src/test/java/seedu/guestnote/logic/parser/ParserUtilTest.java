@@ -6,8 +6,10 @@ import static seedu.guestnote.logic.parser.ParserUtil.MESSAGE_INVALID_INDEX;
 import static seedu.guestnote.testutil.Assert.assertThrows;
 import static seedu.guestnote.testutil.TypicalIndexes.INDEX_FIRST_GUEST;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -16,7 +18,6 @@ import seedu.guestnote.model.guest.Email;
 import seedu.guestnote.model.guest.Name;
 import seedu.guestnote.model.guest.Phone;
 import seedu.guestnote.model.request.Request;
-import seedu.guestnote.model.request.UniqueRequestList;
 
 public class ParserUtilTest {
     private static final String INVALID_NAME = "R@chel";
@@ -160,9 +161,9 @@ public class ParserUtilTest {
     }
 
     @Test
-    public void parseRequests_collectionWithValidRequests_returnsRequestSet() throws Exception {
-        UniqueRequestList actualRequestList = ParserUtil.parseRequests(Arrays.asList(VALID_REQUEST_1, VALID_REQUEST_2));
-        UniqueRequestList expectedRequestList = new UniqueRequestList();
+    public void parseTags_collectionWithValidRequests_returnsTagSet() throws Exception {
+        List<Request> actualRequestList = ParserUtil.parseRequests(Arrays.asList(VALID_REQUEST_1, VALID_REQUEST_2));
+        List<Request> expectedRequestList = new ArrayList<>();
         expectedRequestList.add(new Request(VALID_REQUEST_1));
         expectedRequestList.add(new Request(VALID_REQUEST_2));
 

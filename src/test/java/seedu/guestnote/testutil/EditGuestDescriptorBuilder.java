@@ -1,5 +1,7 @@
 package seedu.guestnote.testutil;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 import seedu.guestnote.logic.commands.EditCommand.EditGuestDescriptor;
@@ -77,8 +79,7 @@ public class EditGuestDescriptorBuilder {
      * in the {@code EditGuestDescriptor} that we are building.
      */
     public EditGuestDescriptorBuilder withRequestsToAdd(String... requests) {
-        UniqueRequestList requestList = new UniqueRequestList();
-        Stream.of(requests).map(Request::new).forEach(requestList::add);
+        List<Request> requestList = new ArrayList<>(Stream.of(requests).map(Request::new).toList());
         descriptor.setRequestsToAdd(requestList);
         return this;
     }
@@ -88,8 +89,7 @@ public class EditGuestDescriptorBuilder {
      * in the {@code EditGuestDescriptor} that we are building.
      */
     public EditGuestDescriptorBuilder withRequestsToDelete(String... requests) {
-        UniqueRequestList requestList = new UniqueRequestList();
-        Stream.of(requests).map(Request::new).forEach(requestList::add);
+        List<Request> requestList = new ArrayList<>(Stream.of(requests).map(Request::new).toList());
         descriptor.setRequestsToDelete(requestList);
         return this;
     }
