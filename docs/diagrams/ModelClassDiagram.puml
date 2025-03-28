@@ -14,11 +14,12 @@ Class UserPrefs
 
 Class UniqueGuestList
 Class Guest
-Class Address
+Class RoomNumber
 Class Email
 Class Name
 Class Phone
-Class Tag
+Class UniqueRequestsList
+Class Request
 
 Class I #FFFFFF
 }
@@ -40,15 +41,14 @@ UniqueGuestList --> "~* all" Guest
 Guest *--> Name
 Guest *--> Phone
 Guest *--> Email
-Guest *--> Address
-Guest *--> "*" Tag
+Guest *--> RoomNumber
+Guest *--> "~* all" UniqueRequestsList
+UniqueRequestsList --> "~* all" Request
 
 Guest -[hidden]up--> I
 UniqueGuestList -[hidden]right-> I
 
 Name -[hidden]right-> Phone
-Phone -[hidden]right-> Address
-Address -[hidden]right-> Email
 
 ModelManager --> "~* filtered" Guest
 @enduml
