@@ -17,37 +17,94 @@ GuestNote is a **desktop app for hotel concierge, optimized for use via a  Line 
 
 1. Ensure you have Java `17` or above installed in your Computer.<br>
    **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
+<panel header="_Not sure which Java version you have?_" no-close>
+<tabs>
+    <tab header="Windows">
+        To check your Java version on Windows, please follow these steps:
+        <ol>
+            <li>Open Command Prompt.</li>
+            <li>Type `java -version` and press Enter.</li>
+            <li>Check the version of Java installed on your computer:</li>
+        </ol>
+        <img src="images/ug/checkjavaversion_windows.jpeg" alt="Java version Windows" style="width:100%;">
+    </tab>
+    <tab header="Mac">
+        To check your Java version on Mac, please follow these steps:
+        <ol>
+            <li>Open Terminal.</li>
+            <li>Type `java -version` and press Enter.</li>
+            <li>Check the version of Java installed on your computer:</li>
+        </ol>
+        <img src="images/ug/checkjavaversion_mac.png" alt="Java version Mac" style="width:100%;">
+    </tab>
+</tabs>
+</panel>
+<br>
 
-1. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-W09-2/tp/releases).
+2. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-W09-2/tp/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your GuestNote.
+3. Copy the file to the folder you want to use as the _home folder_ for your GuestNote.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar guestnote.jar` command to run the application.<br>
+4. Open a command terminal, and use the `cd` command to navigate into the folder you put the jar file in.<br>Run `java -jar guestnote.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
-   ![Ui](images/Ui.png)
+![firstview.png](images/ug/firstview.png)
+5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+<panel header="Take it for a spin, let's try out some commands!" no-close expanded>
+    <tabs>
+        <tab header="**Parts of the App**">
+            <markdown>
+**The app is divided into 3 parts:**
+1. **Command Box:** This is where you type the commands.
+2. **Output Box:** This is where the result of the command is shown.
+3. **Guest Book:** This is where the list of guests is shown.
+![labelledUI.png](images/ug/labelledUI.png)
+            </markdown>
+        </tab>
+        <tab header="**Try out the help command**">
+            <markdown>
+**Type `help` and press Enter to see the help window.**
+            </markdown>
+            <panel header="Help! Where do I type **`help`**?" no-close>
+                <markdown>
+Type the command **`help`** into the Command Box, as shown below:
+![command_input_help.png](images/ug/command_input_help.png)
+                </markdown>
+            </panel>
+            <panel header="What you should see:" no-close expanded>
+                <markdown>
+Now you can always come back to this page if you need help!
+![help_command_executed.png](images/ug/help_command_executed.png)
+                </markdown>
+            </panel>
+        </tab>
+        <tab header="**Try out some other commands**">
+            <markdown>
+Some example commands you can try:
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
+* `list` : Lists all guests.
 
-   * `list` : Lists all guests.
+* `add n/John Doe p/98765432 e/johnd@example.com r/01-01 rq/One extra pillow` : <br>Adds a guest named `John Doe` who are in room 01-01 with a request of one extra pillow to the Guest list.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com r/01-01 rq/One extra pillow` : Adds a guest named `John Doe` who are in room 01-01 with a request of one extra pillow to the Guest list.
+* `delete 3` : Deletes the 3rd guest shown in the current list.
 
-   * `delete 3` : Deletes the 3rd guest shown in the current list.
+* `clear` : Deletes all guests.
 
-   * `clear` : Deletes all guests.
+* `exit` : Exits the app.
 
-   * `exit` : Exits the app.
-   
-   * `help` : Shows the help window.
-   
-   * `find John` : Finds all guests whose names contain the word `John`.
-   
-   * `edit 2 n/James Lee`: Edit guest No. 2 to be named `James Lee`.
-   
-   * `check-in 1` : Check in guest No.1
+* `help` : Shows the help window.
 
-1. Refer to the [Features](#features) below for details of each command.
+* `find John` : Finds all guests whose names contain the word `John`.
+
+* `edit 2 n/James Lee`: Edit guest No. 2 to be named `James Lee`.
+
+* `check-in 1` : Check in guest No.1
+            </markdown>
+        </tab>
+    </tabs>
+</panel>
+<br>
+
+6. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
