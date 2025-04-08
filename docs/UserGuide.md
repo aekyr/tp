@@ -26,6 +26,8 @@ Designed with the fast-paced world of hotel operations in mind, **GuestNote** he
 
 With **GuestNote**, you can stay on top of guest needs, streamline daily concierge tasks, and ensure that no request falls through the cracks. Tailored to your team’s workflow, **GuestNote** simplifies routine processes so you can focus on delivering a smooth and memorable experience for every guest. Spend less time figuring things out and more time focusing on your guests. Provide your guests with a tailored experience, a home away from home.
 
+[[Return to top]](https://ay2425s2-cs2103t-w09-2.github.io/tp/UserGuide.html)
+
 --------------------------------------------------------------------------------------------------------------------
 ## Table of Contents
 Refer to the sidebar if you are on the website, or to the table below if you are on the PDF.
@@ -38,6 +40,8 @@ Refer to the sidebar if you are on the website, or to the table below if you are
 5. [Command Summary](#command-summary)
 6. [Glossary](#glossary)
 
+[[Return to top]](https://ay2425s2-cs2103t-w09-2.github.io/tp/UserGuide.html)
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## How to use our User Guide
@@ -48,6 +52,8 @@ Whether you're just getting started or coming back for a refresher, this guide h
 [Been here before?](#command-summary) Use our handy [Command Summary](#command-summary) as a quick way to brush up on features.
 
 Visit our online [User Guide](https://ay2425s2-cs2103t-w09-2.github.io/tp/UserGuide.html) for the best (and most updated) experience, or view our [Developer Guide](https://ay2425s2-cs2103t-w09-2.github.io/tp/DeveloperGuide.html) to understand our design principles.
+
+[[Return to top]](https://ay2425s2-cs2103t-w09-2.github.io/tp/UserGuide.html)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -167,6 +173,7 @@ Want to learn more? Check out the [Features](#features) section below.
 <br>
 
 
+[[Return to top]](https://ay2425s2-cs2103t-w09-2.github.io/tp/UserGuide.html)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -694,6 +701,8 @@ The data file is stored in the home folder of GuestNote, where you placed the Gu
 </box>
 </div>
 
+[[Return to top]](https://ay2425s2-cs2103t-w09-2.github.io/tp/UserGuide.html)
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
@@ -707,6 +716,8 @@ The data file is stored in the home folder of GuestNote, where you placed the Gu
 **Q**: Can I use GuestNote on multiple computers simultaneously?<br>
 **A**: GuestNote is designed to be used on a single computer. Using it on multiple computers simultaneously may lead to data inconsistencies.
 
+[[Return to top]](https://ay2425s2-cs2103t-w09-2.github.io/tp/UserGuide.html)
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
@@ -715,6 +726,7 @@ The data file is stored in the home folder of GuestNote, where you placed the Gu
 2. **If you minimise the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimised, and no new Help Window will appear. The remedy is to manually restore the minimised Help Window.
 3. **Slow performance on large guest lists**, if the guest list contains a large number of entries, the application may experience slow performance. The remedy is to periodically clear out old or unnecessary entries.
 
+[[Return to top]](https://ay2425s2-cs2103t-w09-2.github.io/tp/UserGuide.html)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -759,3 +771,4 @@ ___
 | **Request**                 | A service or action requested by a guest (e.g., room service, maintenance, additional amenities).                                                                                                                                                                        |
 | **Status**                  | Indicates the guest's booking stage:<br>**BOOKED**, **Checked-In** (`check-in INDEX`), or **Checked-Out** (`check-out INDEX`)                                                                                                                                            |
 | **UI (User Interface)**     | The overall layout and design of how users interact with GuestNote, including both CLI and GUI elements.                                                                                                                                                                 |
+[[Return to top]](https://ay2425s2-cs2103t-w09-2.github.io/tp/UserGuide.html)
