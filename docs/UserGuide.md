@@ -29,6 +29,8 @@ With **GuestNote**, you can stay on top of guest needs, streamline daily concier
 [[Return to top]](https://ay2425s2-cs2103t-w09-2.github.io/tp/UserGuide.html)
 
 --------------------------------------------------------------------------------------------------------------------
+<div style="page-break-before:always">&nbsp;</div><p></p>
+
 ## Table of Contents
 Refer to the sidebar if you are on the website, or to the table below if you are on the PDF.
 
@@ -56,6 +58,8 @@ Visit our online [User Guide](https://ay2425s2-cs2103t-w09-2.github.io/tp/UserGu
 [[Return to top]](https://ay2425s2-cs2103t-w09-2.github.io/tp/UserGuide.html)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-before:always">&nbsp;</div><p></p>
 
 ## Quick start
 
@@ -102,6 +106,8 @@ Click [here](#features) to view the features of GuestNote.
 
 3. Copy the file to the folder you want to use as the [_home folder_](#glossary) for your GuestNote. GuestNote will create all the files it needs in this folder.
 
+<div style="page-break-before:always">&nbsp;</div><p></p>
+
 #### Running GuestNote
 
 1. Open a command terminal, and use the `cd` command to navigate into the folder you put the jar file in. For example, if you put the jar file in a folder named `GuestNote` on the `Desktop`, you can run the following commands:
@@ -115,6 +121,8 @@ Click [here](#features) to view the features of GuestNote.
    ![firstview.png](images/ug/firstview.png)
 
 3. If you prefer to explore GuestNote on your own, you may refer to the [Features](#features) below for details of each command. Otherwise, keep reading!
+
+<div style="page-break-before:always">&nbsp;</div><p></p>
 
 ## Introducing the User Interface
 
@@ -131,6 +139,8 @@ Click [here](#features) to view the features of GuestNote.
 ![help_command_executed.png](images/ug/help_command_executed.png) 
 
 </box>
+
+<div style="page-break-before:always">&nbsp;</div><p></p>
 
 <box type="tip" header="##### Try out some other commands: `add`, `list`, `edit`, `check-in`, and `delete`" light>
 
@@ -176,6 +186,8 @@ Want to learn more? Check out the [Features](#features) section below.
 [[Return to top]](https://ay2425s2-cs2103t-w09-2.github.io/tp/UserGuide.html)
 
 --------------------------------------------------------------------------------------------------------------------
+
+<div style="page-break-before:always">&nbsp;</div><p></p>
 
 ## Features
 
@@ -241,6 +253,8 @@ Example: `n\NAME `**`p\PHONE e\EMAIL`**<br>
 If you are using a PDF version of this document, be careful when copying and pasting commands that span multiple lines as space characters surrounding line-breaks may be omitted when copied over to the application.
 
 </box>
+
+<div style="page-break-before:always">&nbsp;</div><p></p>
 
 #### Field Constraints
 Now that we have the format legend out of the way, let's take a look at the constraints for each field. This is important to know as it will help you understand how to use the application better when you need to perform commands such as [Add a guest](#adding-a-guest-add) or [Edit a guest](#editing-a-guest-edit).
@@ -358,6 +372,8 @@ Sample Output:<br>
 </div>
 <br>
 
+<div style="page-break-before:always">&nbsp;</div><p></p>
+
 ### Adding a guest: `add`
 --- 
 <div style="background-color:#fafafa; padding: 1em; border-radius: 5px; margin-bottom: 1em;">
@@ -425,6 +441,8 @@ Shows a list of all guests with requests, with either `John` or `Alex` in their 
 </box>
 </div>
 <br>
+
+<div style="page-break-before:always">&nbsp;</div><p></p>
 
 ### Locating guests: `find`
 --- 
@@ -634,6 +652,8 @@ Tries to remove the first and second requests in the list of requests for that g
 </div>
 <br>
 
+<div style="page-break-before:always">&nbsp;</div><p></p>
+
 ### Checking In a guest: `check-in` 
 --- 
 <div style="background-color:#fafafa; padding: 1em; border-radius: 5px; margin-bottom: 1em;">
@@ -689,6 +709,8 @@ Changes the status of the guest at index 1 to `CHECKED OUT`.
 </box>
 </div>
 <br>
+
+<div style="page-break-before:always">&nbsp;</div><p></p>
 
 ### Deleting a guest : `delete`
 --- 
