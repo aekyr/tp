@@ -11,8 +11,7 @@ public class Name {
 
     public static final String MESSAGE_CONSTRAINTS =
             "Names should only contain alphanumeric characters and spaces, "
-                    + "should not be blank, "
-                    + "and should only be up to 50 characters long";
+                    + "and should not be blank";
 
     /*
      * The first character of the guestnote must not be a whitespace,

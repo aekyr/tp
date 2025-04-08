@@ -367,7 +367,7 @@ For all cases below, the **System** is the `GuestNote` and the **Actor** is the 
 
 ### Use case: UC01 - Create New Guest
 <box type="info">
-    <b>Preconditions:</b> Guest does not already exist in GuestNote.
+    <b>Precondition:</b> Guest does not already exist in GuestNote.
 </box>
 
 **MSS:**
@@ -433,7 +433,7 @@ For all cases below, the **System** is the `GuestNote` and the **Actor** is the 
 
 ### Use case: UC03 - Update Guest Details
 <box type="info">
-<b>Preconditions:</b> Guest exists in GuestNote.
+<b>Precondition:</b> Guest exists in GuestNote.
 </box>
 
 **MSS:**
@@ -462,7 +462,7 @@ For all cases below, the **System** is the `GuestNote` and the **Actor** is the 
 
 ### Use case: UC04 - Delete Guest
 <box type="info">
-    <b>Preconditions:</b> Guest exists in GuestNote.
+    <b>Precondition:</b> Guest exists in GuestNote.
 </box>
 
 **MSS:**
@@ -496,7 +496,7 @@ For all cases below, the **System** is the `GuestNote` and the **Actor** is the 
 
 ### Use case: UC05 - Add New Request to Existing Guest
 <box type="info">
-<b>Preconditions:</b> Guest exists in GuestNote.
+<b>Precondition:</b> Guest exists in GuestNote.
 </box>
 
 **MSS:**
@@ -815,13 +815,13 @@ Listing all or filtering guests. Guests can be filtered to show only guests with
 2. `list alex`  
 **Expected**: Guests with names containing `alex` (e.g., `Alex Yeoh`, `Alexander Tan`) are shown. If no such guests exist, the guest list appears empty. Status message reflects the success of the `list` command.
 
-3. `list xyz` where `xyz` does not match the names of any guest in the guest list
+3. `list xyz` where `xyz` does not match the names of any guest in the guest list</br>
 **Expected**: No guests are shown. The guest list is empty. Status message reflects the success of the `list` command.
 
-4. `list rq\` when there exists guests with requests in the guest list
+4. `list rq\` when there exists guests with requests in the guest list</br>
    **Expected**: Guests with requests are shown. Status message reflects the success of the `list` command.
 
-5. `list rq\` when there are no guests with requests in the guest list
+5. `list rq\` when there are no guests with requests in the guest list</br>
    **Expected**: An empty guest list is shown. Status message reflects the success of the `list` command.
 
 ### Finding a guest
@@ -834,25 +834,25 @@ Filtering guests by one or more guest fields.
 3. All fields (e.g. phone, email, request) contain varied values to verify the scope of the `find` command.
 
 **Test cases**
-1. `find Alex`  
+1. `find Alex`  </br>
    **Expected**: Guests with names containing `Alex` (e.g., `Alex Yeoh`, `Alexis Tan`) are shown in the list. Matching is case-insensitive and includes partial keywords. Status message reflects the success of the `find` command.
 
-2. `find Ander`  
+2. `find Ander`  </br>
    **Expected**: Guests with names containing `Ander` (e.g., `Ander Yeoh`) are shown in the list. Matching is case-insensitive and includes partial keywords. Status message reflects the success of the `find` command.
 
-3. `find 9876`  
+3. `find 9876`  </br>
    **Expected**: Guests with phones that contain `9876` are displayed (e.g., `98765432`, `99898768`). Status message reflects the success of the `find` command.
 
-4. `find 01-01`  
+4. `find 01-01`  </br>
    **Expected**: Guests with room numbers matching `01-01` are shown. Partial matches (e.g., searching `01`) may also display other rooms like `01-02` or `02-01`). Status message reflects the success of the `find` command.
 
-5. `find bed`  
+5. `find bed`  </br>
    **Expected**: Guests with tags or requests that include the word `bed` (e.g., `bedside table`, `bed lamp`) are shown. Status message reflects the success of the `find` command.
 
-6. `find`  
+6. `find`  </br>
    **Expected**: No input keyword provided. Error message appears, stating that the find command provided is invalid and the correct find command format. Guest list remains unchanged.
 
-7. `find xyz`  where `xyz` is does not match any field of any guest in the list
+7. `find xyz`  where `xyz` is does not match any field of any guest in the list</br>
     **Expected**: No guests match the keyword `xyznotfound`. Guest list is empty. Status message reflects the success of the `find` command.
 
 ### Check In
