@@ -364,6 +364,9 @@ Sample Output:<br>
 <box theme="primary" icon=":fa-solid-question:" style="margin-top:-1em; margin-bottom:0px" seamless>
 
 Adds a guest to the guest book.
+* Phone number is optional
+* Any number of requests can be added to the guest (including 0)
+* The guest's status is initially set to `BOOKED`
 
 </box>
 <box theme="warning" icon=":fa-solid-i-cursor:" style="margin-top:-1em; margin-bottom:0px" seamless>
