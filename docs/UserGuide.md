@@ -836,7 +836,6 @@ The data file is stored in the home folder of GuestNote, where you placed the Gu
 
 --------------------------------------------------------------------------------------------------------------------
 ## Glossary
-### **Glossary**
 ___
 
 | **Term**                     | **Definition / Example**                                                                                                                                                                                                             |
