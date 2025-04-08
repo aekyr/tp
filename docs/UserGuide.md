@@ -12,7 +12,7 @@ Mistakes in guest handling - like assigning the wrong room or forgetting a speci
 
 **That’s where GuestNote comes in.**
 
-Adapted from [AddressBook Level 3 (AB3)](#glossary), **GuestNote** takes the core of a reliable contact management system and reimagines it for hotel operations. The result? A lightning-fast desktop app built for concierges and front desk staff, designed for the speed of a [Command-Line Interface (CLI)](#glossary), but with the clarity of a [Graphical User Interface (GUI)](#glossary), when managing hotel guests. Think of it as muscle memory meets modern [User Interface (UI)](#glossary) – if you can type, you can fly.
+Adapted from [AddressBook Level 3 (AB3)](#glossary), **GuestNote** takes the core of a reliable contact management system and reimagines it for hotel operations. The result? A lightning-fast desktop app built for concierges and front desk staff on all [mainstream OS](#glossary), designed for the speed of a [Command-Line Interface (CLI)](#glossary), but with the clarity of a [Graphical User Interface (GUI)](#glossary), when managing hotel guests. Think of it as muscle memory meets modern [User Interface (UI)](#glossary) – if you can type, you can fly.
 
 ![firstview.png](images/ug/firstview.png)
 
@@ -20,7 +20,7 @@ Adapted from [AddressBook Level 3 (AB3)](#glossary), **GuestNote** takes the cor
 Designed with the fast-paced world of hotel operations in mind, **GuestNote** helps you: 
 - Quickly check in guests and assign rooms with just a few keystrokes 
 - View and manage essential guest information at a glance, all in one place 
-- Track and organise guest requests using simple, structured commands 
+- Track and organise guest requests using simple, structured [commands](#glossary)
 - Reduce costly mistakes through built-in data validation
 - Keep track of all guest requests in one place, so nothing gets missed or forgotten
 
@@ -94,7 +94,7 @@ Click [here](#features) to view the features of GuestNote.
 
 2. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-W09-2/tp/releases).
 
-3. Copy the file to the folder you want to use as the _home folder_ for your GuestNote. GuestNote will create all the files it needs in this folder.
+3. Copy the file to the folder you want to use as the [_home folder_](#glossary) for your GuestNote. GuestNote will create all the files it needs in this folder.
 
 #### Running GuestNote
 
@@ -265,7 +265,7 @@ Sample Output:<br>
 Adds a guest to the guest book.
 
 ### Guest Status
-- All guests automatically have status set to 'BOOKED' when they are added.
+- All guests automatically have [status](#glossary) set to 'BOOKED' when they are added.
 
 ### Name
 - Names should only contain alphanumeric characters and spaces.
@@ -400,7 +400,7 @@ Shows all guests where any field (e.g. email, name) contains the full word "03-0
 <box theme="primary" icon=":fa-solid-question:" style="margin-top:-1em; margin-bottom:0px" seamless>
 
 Edits an existing guest in the guest list.
-* Edits the guest at the specified `INDEX`. The index refers to the index number shown in the displayed guest list. The index **must be a positive integer and must be valid** (ie. within the number of guests displayed).
+* Edits the guest at the specified `INDEX`. The [index](#glossary) refers to the index number shown in the displayed guest list. The index **must be a positive integer and must be valid** (ie. within the number of guests displayed).
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * If the edit results in a duplicate guest in the guest list (ie. two with the same email address), the command is not allowed.
@@ -683,13 +683,13 @@ Any changes to the data are immediately saved to the data file. **There is no ne
 
 The data file is stored in the home folder of GuestNote, where you placed the GuestNote jar file.
 - The data file is named `guestnote.json` and is created automatically when you run the application for the first time.
-- The data file is used to store all the guest information in JSON format, which is a standard format for storing data in a structured way.
+- The data file is used to store all the guest information in [JSON (JavaScript Object Notation)](#glossary) format, which is a standard format for storing data in a structured way.
 
 </box>
 <box theme="warning" icon=":fa-solid-triangle-exclamation:" style="margin-top:-1em; margin-bottom:0px" seamless>
 
 **Caution:** Advanced users are welcome to update data directly by editing that data file, however, please note:
-- If your changes to the data file makes its format invalid, GuestNote will discard all data and start with an empty data file at the next run.  Hence, **it is recommended to take a backup of the file before editing it**.<br>
+- If your changes to the data file makes its format invalid, GuestNote will discard all data and start with an empty data file at the next run.  Hence, **it is recommended to take a [backup](#glossary) of the file before editing it**.<br>
 - Furthermore, certain edits can cause the GuestNote to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, **edit the data file only if you are confident** that you can update it correctly.
 </box>
 </div>
@@ -702,7 +702,7 @@ The data file is stored in the home folder of GuestNote, where you placed the Gu
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous GuestNote home folder.
 
 **Q**: What should I do if the app crashes or behaves unexpectedly?<br>
-**A**: Ensure you are using the correct version of Java as specified in the Quick Start section. If the issue persists, check the log files for any error messages and report them to the [support team](/AboutUs.html)
+**A**: Ensure you are using the correct version of Java as specified in the Quick Start section. If the issue persists, check the log files for any error messages and report them to the [support team](https://ay2425s2-cs2103t-w09-2.github.io/tp/AboutUs.html)
 
 **Q**: Can I use GuestNote on multiple computers simultaneously?<br>
 **A**: GuestNote is designed to be used on a single computer. Using it on multiple computers simultaneously may lead to data inconsistencies.
@@ -738,25 +738,24 @@ The data file is stored in the home folder of GuestNote, where you placed the Gu
 ### **Glossary**
 ___
 
-| **Term**                     | **Definition / Example**                                                                                                                                                                                                             |
-|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **AddressBook Level 3 (AB3)** | The original open-source Java application from which GuestNote was adapted. AB3 serves as a contact management app with a CLI interface and basic CRUD functionality, forming the foundation for GuestNote’s structure and features. |
-| **Backup**                  | A saved copy of your data file, used to restore the GuestNote in case of data loss.                                                                                                                                                  |
-| **cd**                      | Stands for "change directory" – a terminal command used to navigate between folders.<br>e.g., `cd path/to/folder`                                                                                                                    |
-| **Check-in**                | The process of registering a guest’s arrival at the hotel.                                                                                                                                                                           |
-| **Check-out**               | The process of finalising a guest’s stay and removing their active record.                                                                                                                                                           |
-| **CLI (Command Line Interface)** | A text-based interface for interacting with software by typing commands, instead of using a graphical interface. Common in developer tools and command-based apps like GuestNote.                                                    |
-| **Command**                 | An instruction typed into the CLI to perform an action in GuestNote.<br>e.g., `add`, `edit`, `check-in`                                                                                                                              |
-| **CSV (Comma Separated Values)** | A file format used for tabular data, where values are separated by commas and records by newlines. Can be opened by spreadsheet software like Excel.                                                                                 |
-| **Guest**                   | A guest staying at the hotel whose information is stored in the **GuestNote** system.                                                                                                                                                |
-| **GuestNote**               | The system responsible for managing hotel guest records, including personal details, requests, and check-in/check-out data.                                                                                                          |
-| **GUI (Graphical User Interface)** | A visual interface that allows users to interact with GuestNote using elements like buttons, lists, and panels.                                                                                                                      |
-| **Home Folder**             | The folder on your computer where GuestNote stores its data files.                                                                                                                                                                   |
-| **Index**                   | A number representing the position of a guest in the list.<br>e.g., in `delete 2`, "2" is the index of the guest to be deleted.                                                                                                      |
-| **JSON (JavaScript Object Notation)** | A lightweight data-interchange format that is easy to read and write. GuestNote uses JSON to store its internal data files.                                                                                                          |
-| **JSON File Location**      | The path to the JSON data file used by GuestNote.<br>e.g., `/home/user/data/guestnote.json`                                                                                                                                          |
-| **Mainstream OS**           | Refers to common operating systems supported by GuestNote: **Windows**, **Linux**, **Unix**, and **MacOS**.                                                                                                                          |
-| **Parameter**               | A specific input provided with a command, usually in the form of a prefix and value.<br>e.g., `n\James` or `r\01-01`                                                                                                                 |
-| **Request**                 | A service or action requested by a guest (e.g., room service, maintenance, additional amenities).                                                                                                                                    |
-| **Status**                  | Indicates the guest's booking stage:<br>**BOOKED**, **Checked-In** (`check-in INDEX`), or **Checked-Out** (`check-out INDEX`)                                                                                                        |
-| **UI (User Interface)**     | The overall layout and design of how users interact with GuestNote, including both CLI and GUI elements.                                                                                                                             |
+| **Term**                     | **Definition / Example**                                                                                                                                                                                                                                                 |
+|-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **AddressBook Level 3 (AB3)** | The original open-source Java application from which GuestNote was adapted. AB3 serves as a contact management app with a CLI interface and basic CRUD (Create, Read, Update, and Delete)  functionality, forming the foundation for GuestNote’s structure and features. |
+| **Backup**                  | A saved copy of your data file, used to restore the GuestNote in case of data loss.                                                                                                                                                                                      |
+| **cd**                      | Stands for "change directory" – a terminal command used to navigate between folders.<br>e.g., `cd path/to/folder`                                                                                                                                                        |
+| **Check-in**                | The process of registering a guest’s arrival at the hotel.                                                                                                                                                                                                               |
+| **Check-out**               | The process of finalising a guest’s stay and removing their active record.                                                                                                                                                                                               |
+| **CLI (Command Line Interface)** | A text-based interface for interacting with software by typing commands, instead of using a graphical interface. Common in developer tools and command-based apps like GuestNote.                                                                                        |
+| **Command**                 | An instruction typed into the CLI to perform an action in GuestNote.<br>e.g., `add`, `edit`, `check-in`                                                                                                                                                                  |
+| **Guest**                   | A guest staying at the hotel whose information is stored in the **GuestNote** system.                                                                                                                                                                                    |
+| **GuestNote**               | The system responsible for managing hotel guest records, including personal details, requests, and check-in/check-out data.                                                                                                                                              |
+| **GUI (Graphical User Interface)** | A visual interface that allows users to interact with GuestNote using elements like buttons, lists, and panels.                                                                                                                                                          |
+| **Home Folder**             | The folder on your computer where GuestNote stores its data files.                                                                                                                                                                                                       |
+| **Index**                   | A number representing the position of a guest in the list.<br>e.g., in `delete 2`, "2" is the index of the guest to be deleted.                                                                                                                                          |
+| **JSON (JavaScript Object Notation)** | A lightweight data-interchange format that is easy to read and write. GuestNote uses JSON to store its internal data files.                                                                                                                                              |
+| **JSON File Location**      | The path to the JSON data file used by GuestNote.<br>e.g., `/home/user/data/guestnote.json`                                                                                                                                                                              |
+| **Mainstream OS**           | Refers to common operating systems supported by GuestNote: **Windows**, **Linux**, **Unix**, and **MacOS**.                                                                                                                                                              |
+| **Parameter**               | A specific input provided with a command, usually in the form of a prefix and value.<br>e.g., `n\James` or `r\01-01`                                                                                                                                                     |
+| **Request**                 | A service or action requested by a guest (e.g., room service, maintenance, additional amenities).                                                                                                                                                                        |
+| **Status**                  | Indicates the guest's booking stage:<br>**BOOKED**, **Checked-In** (`check-in INDEX`), or **Checked-Out** (`check-out INDEX`)                                                                                                                                            |
+| **UI (User Interface)**     | The overall layout and design of how users interact with GuestNote, including both CLI and GUI elements.                                                                                                                                                                 |
