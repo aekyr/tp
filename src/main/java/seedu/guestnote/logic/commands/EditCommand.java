@@ -40,14 +40,16 @@ public class EditCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the guest identified "
             + "by the index number used in the displayed guest list. "
+            + "\nAt least one of the optional fields below (e.g., name, email, request) must be " +
+            "provided.\n"
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ROOMNUMBER + "ROOMNUMBER] "
-            + "[" + PREFIX_ADD_REQ + "ADD_REQUEST] "
-            + "[" + PREFIX_DELETE_REQ + "DELETE_REQUEST]...\n"
+            + "[" + PREFIX_ADD_REQ + "ADD_REQUEST]...\n "
+            + "[" + PREFIX_DELETE_REQ + "DELETE_REQUEST]... "
             + "[" + PREFIX_DELETE_REQ_INDEX + "DELETE_REQUEST_INDEX]...\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
