@@ -21,7 +21,7 @@ import seedu.guestnote.model.request.Request;
  */
 public class ParserUtil {
 
-    public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_INDEX = "Index was not provided or is not a non-zero unsigned integer.";
     public static final String MESSAGE_INDEX_HAS_LEADING_ZEROES =
             "The index provided has leading zeros. Use '%s' instead of '%s'.";
     public static final String MESSAGE_INDEX_TOO_LARGE = "The index provided is too large.";
