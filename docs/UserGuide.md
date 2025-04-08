@@ -841,7 +841,6 @@ The data file is stored in the home folder of GuestNote, where you placed the Gu
 ### **Glossary**
 ___
 
-=======
 | **Term**                     | **Definition / Example**                                                                                                                                                                                                             |
 |-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **AddressBook Level 3 (AB3)** | The original open-source Java application from which **GuestNote** was adapted. AB3 serves as a contact management app with a CLI interface and basic CRUD functionality, forming the foundation for **GuestNote**’s structure and features. |
@@ -863,4 +862,5 @@ ___
 | **Request**                 | A service or action requested by a guest (e.g., room service, maintenance, additional amenities).                                                                                                                                    |
 | **Status**                  | Indicates the guest's booking stage:<br>**BOOKED**, **Checked-In** (`check-in INDEX`), or **Checked-Out** (`check-out INDEX`)                                                                                                        |
 | **UI (User Interface)**     | The overall layout and design of how users interact with GuestNote, including both CLI and GUI elements.                                                                                                                             |
+
 [[Return to top]](https://ay2425s2-cs2103t-w09-2.github.io/tp/UserGuide.html)
