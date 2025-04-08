@@ -362,36 +362,6 @@ Sample Output:<br>
 
 Adds a guest to the guest book.
 
-### Guest Status
-- All guests automatically have [status](#glossary) set to 'BOOKED' when they are added.
-
-### Name
-- Names should only contain alphanumeric characters and spaces.
-
-### Phone
-- Phones should only contain numbers, and be between 4 and 17 digits long.
-  - This field is **optional**
-
-### Email
-- Emails should be of the format local-part@domain and adhere to the following constraints:
-  - The entire email must **not exceed 254** characters. 
-  - The local-part should only contain alphanumeric characters and these special characters: +, _, ., -. The local-part may not start or end with any special characters. 
-  - The local-part is followed by a '@' and then a domain name. The domain name is made up of domain labels separated by periods. The domain name must:
-    - End with a domain label that is **at least 2** characters long.
-    - Have each domain label **start and end** with **alphanumeric** characters.
-    - Have each domain label consist of **alphanumeric** characters, separated only by hyphens, if any.
-
-### Room Number
-- Room numbers should contain two two-digit numbers **between 01 and 99**, separated by a hyphen.
-  - For example, `01-01`, `12-34`, `99-99` are valid room numbers, while `00-00` is a invalid number.
-  - Multiple guests can share the same room.
-
-### Requests
-- Requests should be alphanumeric, may include spaces, and must not exceed 75 characters.
-  - A guest can have any number of requests (including 0).
-  - Requests must be unique. 
-  - Requests spelled the same are treated as the same, regardless of capitalisation
-
 </box>
 <box theme="warning" icon=":fa-solid-i-cursor:" style="margin-top:-1em; margin-bottom:0px" seamless>
 
