@@ -13,7 +13,7 @@ pageNav: 3
 
 ## **Acknowledgements**
 - This project is based on the AddressBook-Level3 project created by the [SE-EDU initiative](https://se-education.org/)
-- The formatting of our UserGuide is inspired by UserGuide of group's from previous semesters: [(AY2425S1-CS2103T-F15-4)](https://ay2425s1-cs2103t-f15-4.github.io/tp/UserGuide.html) and [(AY2425S1-CS2103T-T09-1)](https://ay2425s1-cs2103t-t09-1.github.io/tp/UserGuide.html).
+- The formatting of our UserGuide is inspired by that of groups from previous semesters: [(AY2425S1-CS2103T-F15-4)](https://ay2425s1-cs2103t-f15-4.github.io/tp/UserGuide.html) and [(AY2425S1-CS2103T-T09-1)](https://ay2425s1-cs2103t-t09-1.github.io/tp/UserGuide.html).
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -29,7 +29,7 @@ Refer to the guide [_Setting up and getting started_](https://github.com/AY2425S
 
 <puml src="diagrams/ArchitectureDiagram.puml" width="280" />
 
-The * * *Architecture Diagram* * * given above explains the high-level design of the App.
+The **Architecture Diagram** given above explains the high-level design of the App.
 
 Given below is a quick overview of main components and how they interact with each other.
 
@@ -926,7 +926,7 @@ Team size: 5
 - Blocked Reserved or Invalid Addresses: Filters out test or reserved domains (e.g. `example@invalid.com`, `@localhost`).
 5. **Specific Error Messages for Missing Compulsory Fields**</br>
    Currently, when the user fails to add compulsory fields, GuestNote displays a generic error message stating invalid command format. This enhancement improves usability by providing more informative error messages that explicitly state which compulsory fields are missing. This helps users identify and correct their mistakes more easily.
-6. **Restrict Duplicate Email and Phone Numbers Based on Family or Booking**</br>
-   Currently, users can be added or edited to have the same email and/or same phone number as another existing guest in GuestNote. This enhancement will add further restrictions whereby only guests who are under the same family or the same booking will be able to share phone numbers and/or emails.
+6. **Restrict Duplicate Phone Numbers Based on Family or Booking**</br>
+   Currently, users can be added or edited to have the same phone number as another existing guest in GuestNote. This enhancement will add further restrictions whereby only guests who are under the same family or the same booking will be able to share the same phone number.
 7. **Restrict Number of Guests in the Same Room**</br>
    Currently, multiple users can be added to the same room. This enhancement will add further restrictions on the number of guests that can be assigned to any given room, ensuring that room capacity limits are enforced.
