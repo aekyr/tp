@@ -763,7 +763,7 @@ The data file is stored in the home folder of GuestNote, where you placed the Gu
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous GuestNote home folder.
 
 **Q**: What should I do if the app crashes or behaves unexpectedly?<br>
-**A**: Ensure you are using the correct version of Java as specified in the Quick Start section. If the issue persists, check the log files for any error messages and report them to the [support team](/AboutUs.html)
+**A**: Ensure you are using the correct version of Java as specified in the Quick Start section. If the issue persists, check the log files for any error messages and report them to the [support team](https://ay2425s2-cs2103t-w09-2.github.io/tp/AboutUs.html)
 
 **Q**: Can I use GuestNote on multiple computers simultaneously?<br>
 **A**: GuestNote is designed to be used on a single computer. Using it on multiple computers simultaneously may lead to data inconsistencies.
