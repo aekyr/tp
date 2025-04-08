@@ -20,7 +20,7 @@ Adapted from [AddressBook Level 3 (AB3)](#glossary), **GuestNote** takes the cor
 Designed with the fast-paced world of hotel operations in mind, **GuestNote** helps you: 
 - Quickly check in guests and assign rooms with just a few keystrokes 
 - View and manage essential guest information at a glance, all in one place 
-- Track and organise guest requests using simple, structured [commands](#glossary)
+- Track and organise guest requests using simple, structured [commands](#command-summary)
 - Reduce costly mistakes through built-in data validation
 - Keep track of all guest requests in one place, so nothing gets missed or forgotten
 
@@ -244,6 +244,8 @@ If you are using a PDF version of this document, be careful when copying and pas
 
 #### Field Constraints
 Now that we have the format legend out of the way, let's take a look at the constraints for each field. This is important to know as it will help you understand how to use the application better when you need to perform commands such as [Add a guest](#adding-a-guest-add) or [Edit a guest](#editing-a-guest-edit).
+
+Some of this information is also available with each command explanation where relevant for easy reference, but this section is a good place to get an overview of the constraints for each field.
 <div style="background-color:#fafafa; padding: 1em; border-radius: 5px; margin-bottom: 1em;">
 <box theme="secondary" icon=":fa-solid-hashtag:" style="margin-top:-1em; margin-bottom:0px" seamless>
 
@@ -278,6 +280,7 @@ Names should only contain:
   * contain at least one number and any number of spaces
   * be between 4 and 20 characters long.
 * This field is can be left empty.
+* Two guests can share the same phone number (e.g. if they are family).
 * Examples: `91234567`, `1800 1234 4578`
 </box>
 <box theme="warning" icon=":fa-solid-at:" style="margin-top:-1em; margin-bottom:0px" seamless>
@@ -361,36 +364,6 @@ Sample Output:<br>
 <box theme="primary" icon=":fa-solid-question:" style="margin-top:-1em; margin-bottom:0px" seamless>
 
 Adds a guest to the guest book.
-
-### Guest Status
-- All guests automatically have [status](#glossary) set to 'BOOKED' when they are added.
-
-### Name
-- Names should only contain alphanumeric characters and spaces.
-
-### Phone
-- Phones should only contain numbers, and be between 4 and 17 digits long.
-  - This field is **optional**
-
-### Email
-- Emails should be of the format local-part@domain and adhere to the following constraints:
-  - The entire email must **not exceed 254** characters. 
-  - The local-part should only contain alphanumeric characters and these special characters: +, _, ., -. The local-part may not start or end with any special characters. 
-  - The local-part is followed by a '@' and then a domain name. The domain name is made up of domain labels separated by periods. The domain name must:
-    - End with a domain label that is **at least 2** characters long.
-    - Have each domain label **start and end** with **alphanumeric** characters.
-    - Have each domain label consist of **alphanumeric** characters, separated only by hyphens, if any.
-
-### Room Number
-- Room numbers should contain two two-digit numbers **between 01 and 99**, separated by a hyphen.
-  - For example, `01-01`, `12-34`, `99-99` are valid room numbers, while `00-00` is a invalid number.
-  - Multiple guests can share the same room.
-
-### Requests
-- Requests should be alphanumeric, may include spaces, and must not exceed 75 characters.
-  - A guest can have any number of requests (including 0).
-  - Requests must be unique. 
-  - Requests spelled the same are treated as the same, regardless of capitalisation
 
 </box>
 <box theme="warning" icon=":fa-solid-i-cursor:" style="margin-top:-1em; margin-bottom:0px" seamless>
