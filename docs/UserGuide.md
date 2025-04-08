@@ -174,20 +174,22 @@ Want to learn more? Check out the [Features](#features) section below.
 
 #### Table of Contents
 * [Format Legend](#format-legend)
-* [Viewing help](#viewing-help-help)
-* [Adding a guest](#adding-a-guest-add)
-* [Listing all guests](#listing-all-guests-list)
-* [Locating guests](#locating-guests-find)
-* [Editing a guest](#editing-a-guest-edit)
-  * [Adding a request to a guest](#adding-a-request-to-a-guest-edit-index-rq-request)
-  * [Removing a request of a guest](#removing-a-request-of-a-guest-edit-index-rq-request)
-  * [Removing a request by index](#removing-a-request-by-index-edit-index-ri-request-index)
-* [Check-In a guest](#checking-in-a-guest-check-in)
-* [Check-Out a guest](#checking-out-a-guest-check-out)
-* [Deleting a guest](#deleting-a-guest-delete)
-* [Clearing all entries](#clearing-all-entries-clear)
-* [Exiting the program](#exiting-the-program-exit)
-* [Notes on Data Management](#notes-on-the-data-file)
+* [Field Constraints](#field-constraints)
+* **Commands**
+  * [Viewing help](#viewing-help-help)
+  * [Adding a guest](#adding-a-guest-add)
+  * [Listing all guests](#listing-all-guests-list)
+  * [Locating guests](#locating-guests-find)
+  * [Editing a guest](#editing-a-guest-edit)
+    * [Adding a request to a guest](#adding-a-request-to-a-guest-edit-index-rq-request)
+    * [Removing a request of a guest](#removing-a-request-of-a-guest-edit-index-rq-request)
+    * [Removing a request by index](#removing-a-request-by-index-edit-index-ri-request-index)
+  * [Check-In a guest](#checking-in-a-guest-check-in)
+  * [Check-Out a guest](#checking-out-a-guest-check-out)
+  * [Deleting a guest](#deleting-a-guest-delete)
+  * [Clearing all entries](#clearing-all-entries-clear)
+  * [Exiting the program](#exiting-the-program-exit)
+* [Notes on Data Storage](#notes-on-the-data-file)
 
 
 #### Format Legend
@@ -233,7 +235,97 @@ If you are using a PDF version of this document, be careful when copying and pas
 
 </box>
 
-### Commands
+#### Field Constraints
+Now that we have the format legend out of the way, let's take a look at the constraints for each field. This is important to know as it will help you understand how to use the application better when you need to perform commands such as [Add a guest](#adding-a-guest-add) or [Edit a guest](#editing-a-guest-edit).
+<div style="background-color:#fafafa; padding: 1em; border-radius: 5px; margin-bottom: 1em;">
+<box theme="secondary" icon=":fa-solid-hashtag:" style="margin-top:-1em; margin-bottom:0px" seamless>
+
+**INDEX** <span class="badge bg-danger">Mandatory</span> <span class="badge bg-info">Generated</span><br>
+* The index refers to the index number shown in the displayed guest list.
+  * Index **must be a positive integer** and **must be valid** (ie. within the number of guests displayed).
+  * Index for a guest may change as the guest list is modified.
+* A similar scheme is used to refer to requests of a guest.
+  * The index of a request is the order in which it appears in the list of requests for that guest.
+  * The two indexing schemes are independent of each other.
+
+![IndexesAnnotation.png](images/ug/IndexesAnnotation.png)
+
+</box>
+<box theme="primary" icon=":fa-solid-n:" style="margin-top:-1em; margin-bottom:0px" seamless>
+
+**n\NAME** <span class="badge bg-danger">Mandatory</span><br>
+Names should only contain:
+* alphanumeric characters and spaces 
+* or special characters such as `-, (, ), @, /`
+* Examples: 
+  * `George Gauss-Jordan` :fa-solid-check: :`-` hyphens allowed
+  * `Alex Yeoh Shu Min (Xu Min)` :fa-solid-check: :`(` and `)` brackets allowed
+  * `Vong @ Vu Tram Vong` :fa-solid-check: :`@` "at" symbol allowed
+  * `Raja s/o Ravi` :fa-solid-check: :`/` forward slash allowed
+
+</box>
+<box theme="success" icon=":fa-solid-phone:" style="margin-top:-1em; margin-bottom:0px" seamless>
+
+**p\PHONE** <span class="badge bg-success">Optional</span>
+* Phone (numbers) should:
+  * contain at least one number and any number of spaces
+  * be between 4 and 20 characters long.
+* This field is can be left empty.
+* Examples: `91234567`, `1800 1234 4578`
+</box>
+<box theme="warning" icon=":fa-solid-at:" style="margin-top:-1em; margin-bottom:0px" seamless>
+
+**e\EMAIL** <span class="badge bg-danger">Mandatory</span> <span class="badge bg-warning">Unique</span><br>
+Emails should be of the format `local-part@domain` and adhere to the following constraints:
+* Two guests cannot share the same email address
+* The entire email must **not exceed 254** characters
+* The local-part should only contain alphanumeric characters and these special characters: `+ _ . -` 
+  * Note: Special characters cannot not be at the start or end of local-part
+* The local-part is followed by a '@' and then a domain name. The domain name is made up of domain labels separated by periods. The domain name must:
+  * End with a domain label that is **at least 2** characters long
+  * Have each domain label **start and end** with **alphanumeric** characters
+  * Have each domain label consist of **alphanumeric** characters, separated only by hyphens, if any
+* Examples
+  * `john@example` :fa-solid-check: :Emails without top level domains like `.com` are OK
+  * `david_jones@example.com` :fa-solid-check: :`_` underscore allowed
+  * `david@aa` :fa-solid-check: :`aa` meets minimum length of 2 characters
+
+</box>
+<box theme="info" icon=":fa-solid-door-open:" style="margin-top:-1em; margin-bottom:0px" seamless>
+
+**r\ROOMNUMBER** <span class="badge bg-danger">Mandatory</span> <br>
+Room numbers should contain two two-digit numbers **between 01 and 99**, separated by a hyphen
+* Format: `FF-NN`, where `FF` is the floor number and `NN` is the unit number.
+* Example: `01-01` :fa-solid-check: :`01` leading zero must be included for single digit numbers
+</box>
+
+<box theme="secondary" icon=":fa-solid-comment-dots:" style="margin-top:-1em; margin-bottom:0px" seamless>
+
+**rq\REQUEST** <span class="badge bg-success">Optional</span> <span class="badge bg-warning">Unique</span> <span class="badge bg-secondary">Multiple</span> <br>
+
+Requests:
+* should be alphanumeric and may include spaces
+* must not exceed 75 characters
+* must be unique for each guest, where requests **spelled the same are treated as the duplicates**
+* A guest can have any number of requests (including 0).
+* Examples:
+  * A guest **may** have requests `Extra Pillow`, `Extra Blanket`, and `Extra Towel` :fa-solid-check:
+  * A guest **cannot** have two requests named `extra pillow`, and `Extra Pillow` :fa-solid-xmark: 
+  * Two guests can have same request `Extra Pillow` :fa-solid-check: : Unique condition only applies within a guest
+
+</box>
+<box theme="danger" icon=":fa-solid-clipboard-question:" style="margin-top:-1em; margin-bottom:0px" seamless>
+
+**STATUS** <span class="badge bg-danger">Mandatory</span> <span class="badge bg-info">Generated</span> <br>
+A guest's status:
+* can only take one of the following values: `BOOKED`, `CHECKED_IN`, or `CHECKED_OUT`
+* is automatically set as `BOOKED` when a guest is added
+* can be set to `CHECKED_IN` or `CHECKED_OUT` when a guest checks in or checks out
+
+</box>
+</div>
+<br>
+
 
 
 
@@ -256,43 +348,12 @@ Sample Output:<br>
 </div>
 <br>
 
-
 ### Adding a guest: `add`
 --- 
 <div style="background-color:#fafafa; padding: 1em; border-radius: 5px; margin-bottom: 1em;">
 <box theme="primary" icon=":fa-solid-question:" style="margin-top:-1em; margin-bottom:0px" seamless>
 
 Adds a guest to the guest book.
-
-### Guest Status
-- All guests automatically have status set to 'BOOKED' when they are added.
-
-### Name
-- Names should only contain alphanumeric characters and spaces.
-
-### Phone
-- Phones should only contain numbers, and be between 4 and 17 digits long.
-  - This field is **optional**
-
-### Email
-- Emails should be of the format local-part@domain and adhere to the following constraints:
-  - The entire email must **not exceed 254** characters. 
-  - The local-part should only contain alphanumeric characters and these special characters: +, _, ., -. The local-part may not start or end with any special characters. 
-  - The local-part is followed by a '@' and then a domain name. The domain name is made up of domain labels separated by periods. The domain name must:
-    - End with a domain label that is **at least 2** characters long.
-    - Have each domain label **start and end** with **alphanumeric** characters.
-    - Have each domain label consist of **alphanumeric** characters, separated only by hyphens, if any.
-
-### Room Number
-- Room numbers should contain two two-digit numbers **between 01 and 99**, separated by a hyphen.
-  - For example, `01-01`, `12-34`, `99-99` are valid room numbers, while `00-00` is a invalid number.
-  - Multiple guests can share the same room.
-
-### Requests
-- Requests should be alphanumeric, may include spaces, and must not exceed 75 characters.
-  - A guest can have any number of requests (including 0).
-  - Requests must be unique. 
-  - Requests spelled the same are treated as the same, regardless of capitalisation
 
 </box>
 <box theme="warning" icon=":fa-solid-i-cursor:" style="margin-top:-1em; margin-bottom:0px" seamless>
@@ -702,7 +763,7 @@ The data file is stored in the home folder of GuestNote, where you placed the Gu
 **A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous GuestNote home folder.
 
 **Q**: What should I do if the app crashes or behaves unexpectedly?<br>
-**A**: Ensure you are using the correct version of Java as specified in the Quick Start section. If the issue persists, check the log files for any error messages and report them to the [support team](/AboutUs.html)
+**A**: Ensure you are using the correct version of Java as specified in the Quick Start section. If the issue persists, check the log files for any error messages and report them to the [support team](https://ay2425s2-cs2103t-w09-2.github.io/tp/AboutUs.html)
 
 **Q**: Can I use GuestNote on multiple computers simultaneously?<br>
 **A**: GuestNote is designed to be used on a single computer. Using it on multiple computers simultaneously may lead to data inconsistencies.
