@@ -12,7 +12,7 @@ Mistakes in guest handling - like assigning the wrong room or forgetting a speci
 
 **That’s where GuestNote comes in.**
 
-Adapted from [AddressBook Level 3 (AB3)](#glossary), **GuestNote** takes the core of a reliable contact management system and reimagines it for hotel operations. The result? A lightning-fast desktop app built for concierges and front desk staff, designed for the speed of a [Command-Line Interface (CLI)](#glossary), but with the clarity of a [Graphical User Interface (GUI)](#glossary), when managing hotel guests. Think of it as muscle memory meets modern [User Interface (UI)](#glossary) – if you can type, you can fly.
+Adapted from [AddressBook Level 3 (AB3)](#glossary), **GuestNote** takes the core of a reliable contact management system and reimagines it for hotel operations. The result? A lightning-fast desktop app built for concierges and front desk staff on all [mainstream OS](#glossary), designed for the speed of a [Command-Line Interface (CLI)](#glossary), but with the clarity of a [Graphical User Interface (GUI)](#glossary), when managing hotel guests. Think of it as muscle memory meets modern [User Interface (UI)](#glossary) – if you can type, you can fly.
 
 ![firstview.png](images/ug/firstview.png)
 
@@ -20,11 +20,13 @@ Adapted from [AddressBook Level 3 (AB3)](#glossary), **GuestNote** takes the cor
 Designed with the fast-paced world of hotel operations in mind, **GuestNote** helps you: 
 - Quickly check in guests and assign rooms with just a few keystrokes 
 - View and manage essential guest information at a glance, all in one place 
-- Track and organise guest requests using simple, structured commands 
+- Track and organise guest requests using simple, structured [commands](#glossary)
 - Reduce costly mistakes through built-in data validation
 - Keep track of all guest requests in one place, so nothing gets missed or forgotten
 
 With **GuestNote**, you can stay on top of guest needs, streamline daily concierge tasks, and ensure that no request falls through the cracks. Tailored to your team’s workflow, **GuestNote** simplifies routine processes so you can focus on delivering a smooth and memorable experience for every guest. Spend less time figuring things out and more time focusing on your guests. Provide your guests with a tailored experience, a home away from home.
+
+[[Return to top]](https://ay2425s2-cs2103t-w09-2.github.io/tp/UserGuide.html)
 
 --------------------------------------------------------------------------------------------------------------------
 ## Table of Contents
@@ -38,6 +40,8 @@ Refer to the sidebar if you are on the website, or to the table below if you are
 5. [Command Summary](#command-summary)
 6. [Glossary](#glossary)
 
+[[Return to top]](https://ay2425s2-cs2103t-w09-2.github.io/tp/UserGuide.html)
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## How to use our User Guide
@@ -48,6 +52,8 @@ Whether you're just getting started or coming back for a refresher, this guide h
 [Been here before?](#command-summary) Use our handy [Command Summary](#command-summary) as a quick way to brush up on features.
 
 Visit our online [User Guide](https://ay2425s2-cs2103t-w09-2.github.io/tp/UserGuide.html) for the best (and most updated) experience, or view our [Developer Guide](https://ay2425s2-cs2103t-w09-2.github.io/tp/DeveloperGuide.html) to understand our design principles.
+
+[[Return to top]](https://ay2425s2-cs2103t-w09-2.github.io/tp/UserGuide.html)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -94,7 +100,7 @@ Click [here](#features) to view the features of GuestNote.
 
 2. Download the latest `.jar` file from [here](https://github.com/AY2425S2-CS2103T-W09-2/tp/releases).
 
-3. Copy the file to the folder you want to use as the _home folder_ for your GuestNote. GuestNote will create all the files it needs in this folder.
+3. Copy the file to the folder you want to use as the [_home folder_](#glossary) for your GuestNote. GuestNote will create all the files it needs in this folder.
 
 #### Running GuestNote
 
@@ -167,6 +173,7 @@ Want to learn more? Check out the [Features](#features) section below.
 <br>
 
 
+[[Return to top]](https://ay2425s2-cs2103t-w09-2.github.io/tp/UserGuide.html)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -355,6 +362,36 @@ Sample Output:<br>
 
 Adds a guest to the guest book.
 
+### Guest Status
+- All guests automatically have [status](#glossary) set to 'BOOKED' when they are added.
+
+### Name
+- Names should only contain alphanumeric characters and spaces.
+
+### Phone
+- Phones should only contain numbers, and be between 4 and 17 digits long.
+  - This field is **optional**
+
+### Email
+- Emails should be of the format local-part@domain and adhere to the following constraints:
+  - The entire email must **not exceed 254** characters. 
+  - The local-part should only contain alphanumeric characters and these special characters: +, _, ., -. The local-part may not start or end with any special characters. 
+  - The local-part is followed by a '@' and then a domain name. The domain name is made up of domain labels separated by periods. The domain name must:
+    - End with a domain label that is **at least 2** characters long.
+    - Have each domain label **start and end** with **alphanumeric** characters.
+    - Have each domain label consist of **alphanumeric** characters, separated only by hyphens, if any.
+
+### Room Number
+- Room numbers should contain two two-digit numbers **between 01 and 99**, separated by a hyphen.
+  - For example, `01-01`, `12-34`, `99-99` are valid room numbers, while `00-00` is a invalid number.
+  - Multiple guests can share the same room.
+
+### Requests
+- Requests should be alphanumeric, may include spaces, and must not exceed 75 characters.
+  - A guest can have any number of requests (including 0).
+  - Requests must be unique. 
+  - Requests spelled the same are treated as the same, regardless of capitalisation
+
 </box>
 <box theme="warning" icon=":fa-solid-i-cursor:" style="margin-top:-1em; margin-bottom:0px" seamless>
 
@@ -461,7 +498,7 @@ Shows all guests where any field (e.g. email, name) contains the full word "03-0
 <box theme="primary" icon=":fa-solid-question:" style="margin-top:-1em; margin-bottom:0px" seamless>
 
 Edits an existing guest in the guest list.
-* Edits the guest at the specified `INDEX`. The index refers to the index number shown in the displayed guest list. The index **must be a positive integer and must be valid** (ie. within the number of guests displayed).
+* Edits the guest at the specified `INDEX`. The [index](#glossary) refers to the index number shown in the displayed guest list. The index **must be a positive integer and must be valid** (ie. within the number of guests displayed).
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
 * If the edit results in a duplicate guest in the guest list (ie. two with the same email address), the command is not allowed.
@@ -744,16 +781,18 @@ Any changes to the data are immediately saved to the data file. **There is no ne
 
 The data file is stored in the home folder of GuestNote, where you placed the GuestNote jar file.
 - The data file is named `guestnote.json` and is created automatically when you run the application for the first time.
-- The data file is used to store all the guest information in JSON format, which is a standard format for storing data in a structured way.
+- The data file is used to store all the guest information in [JSON (JavaScript Object Notation)](#glossary) format, which is a standard format for storing data in a structured way.
 
 </box>
 <box theme="warning" icon=":fa-solid-triangle-exclamation:" style="margin-top:-1em; margin-bottom:0px" seamless>
 
 **Caution:** Advanced users are welcome to update data directly by editing that data file, however, please note:
-- If your changes to the data file makes its format invalid, GuestNote will discard all data and start with an empty data file at the next run.  Hence, **it is recommended to take a backup of the file before editing it**.<br>
+- If your changes to the data file makes its format invalid, GuestNote will discard all data and start with an empty data file at the next run.  Hence, **it is recommended to take a [backup](#glossary) of the file before editing it**.<br>
 - Furthermore, certain edits can cause the GuestNote to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, **edit the data file only if you are confident** that you can update it correctly.
 </box>
 </div>
+
+[[Return to top]](https://ay2425s2-cs2103t-w09-2.github.io/tp/UserGuide.html)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -768,6 +807,8 @@ The data file is stored in the home folder of GuestNote, where you placed the Gu
 **Q**: Can I use GuestNote on multiple computers simultaneously?<br>
 **A**: GuestNote is designed to be used on a single computer. Using it on multiple computers simultaneously may lead to data inconsistencies.
 
+[[Return to top]](https://ay2425s2-cs2103t-w09-2.github.io/tp/UserGuide.html)
+
 --------------------------------------------------------------------------------------------------------------------
 
 ## Known issues
@@ -776,6 +817,7 @@ The data file is stored in the home folder of GuestNote, where you placed the Gu
 2. **If you minimise the Help Window** and then run the `help` command (or use the `Help` menu, or the keyboard shortcut `F1`) again, the original Help Window will remain minimised, and no new Help Window will appear. The remedy is to manually restore the minimised Help Window.
 3. **Slow performance on large guest lists**, if the guest list contains a large number of entries, the application may experience slow performance. The remedy is to periodically clear out old or unnecessary entries.
 
+[[Return to top]](https://ay2425s2-cs2103t-w09-2.github.io/tp/UserGuide.html)
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -799,6 +841,7 @@ The data file is stored in the home folder of GuestNote, where you placed the Gu
 ### **Glossary**
 ___
 
+=======
 | **Term**                     | **Definition / Example**                                                                                                                                                                                                             |
 |-----------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **AddressBook Level 3 (AB3)** | The original open-source Java application from which **GuestNote** was adapted. AB3 serves as a contact management app with a CLI interface and basic CRUD functionality, forming the foundation for **GuestNote**’s structure and features. |
@@ -808,7 +851,6 @@ ___
 | **Check-out**               | The process of finalising a guest’s stay and removing their active record.                                                                                                                                                           |
 | **CLI (Command Line Interface)** | A text-based interface for interacting with software by typing commands, instead of using a graphical interface. Common in developer tools and command-based apps like **GuestNote**.                                                    |
 | **Command**                 | An instruction typed into the CLI to perform an action in GuestNote.<br>e.g., `add`, `edit`, `check-in`                                                                                                                              |
-| **CSV (Comma Separated Values)** | A file format used for tabular data, where values are separated by commas and records by newlines. Can be opened by spreadsheet software like Excel.                                                                                 |
 | **Guest**                   | A guest staying at the hotel whose information is stored in the **GuestNote** system.                                                                                                                                                |
 | **GuestNote**               | The system responsible for managing hotel guest records, including personal details, requests, and check-in/check-out data.                                                                                                          |
 | **GUI (Graphical User Interface)** | A visual interface that allows users to interact with **GuestNote** using elements like buttons, lists, and panels.                                                                                                                      |
@@ -821,3 +863,4 @@ ___
 | **Request**                 | A service or action requested by a guest (e.g., room service, maintenance, additional amenities).                                                                                                                                    |
 | **Status**                  | Indicates the guest's booking stage:<br>**BOOKED**, **Checked-In** (`check-in INDEX`), or **Checked-Out** (`check-out INDEX`)                                                                                                        |
 | **UI (User Interface)**     | The overall layout and design of how users interact with GuestNote, including both CLI and GUI elements.                                                                                                                             |
+[[Return to top]](https://ay2425s2-cs2103t-w09-2.github.io/tp/UserGuide.html)
