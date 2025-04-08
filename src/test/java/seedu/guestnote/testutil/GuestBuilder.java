@@ -17,7 +17,7 @@ public class GuestBuilder {
     public static final String DEFAULT_NAME = "Amy Bee";
     public static final String DEFAULT_PHONE = "85355255";
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
-    public static final String DEFAULT_ROOM_NUMBER = "00-00";
+    public static final String DEFAULT_ROOM_NUMBER = "01-01";
     public static final Status DEFAULT_STATUS = Status.BOOKED;
 
     private Name name;
