@@ -18,7 +18,7 @@ public class Messages {
     public static final String MESSAGE_INVALID_GUEST_DISPLAYED_INDEX = "The guest index provided is invalid";
     public static final String MESSAGE_GUESTS_LISTED_OVERVIEW = "%1$d guests listed!";
     public static final String MESSAGE_DUPLICATE_FIELDS =
-            "Multiple values specified for the following single-valued field(s): ";
+            "Multiple values were provided for the following fields, but only one is allowed: ";
 
     /**
      * Returns an error message indicating the duplicate prefixes.
